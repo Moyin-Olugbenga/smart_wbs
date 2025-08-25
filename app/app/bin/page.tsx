@@ -39,6 +39,7 @@ export default function Page() {
     const fetchBins = async () => {
       const bins = await Bin.getBins();
       setData(bins);
+      console.log(bins)
     };
     fetchBins();
   }, []);
