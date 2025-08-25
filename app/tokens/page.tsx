@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { TokenResult } from "@/classes/Bin";
 
 
     const data = await Token.getTokens();
@@ -55,7 +56,7 @@ export default function Page({
                       </TableRow>
                   </TableHeader>
                   <TableBody>
-                      {data.map((token: { id: Key | null | undefined; username: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; pass: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; }) => (
+                      {data.map((token: TokenResult) => (
                       <TableRow key={token.id}>
                           <TableCell className="font-medium">{token.id}</TableCell>
                           <TableCell>{token.username}</TableCell>

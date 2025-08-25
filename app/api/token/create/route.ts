@@ -11,11 +11,17 @@ export const POST = async(req: NextRequest) => {
                 username: token,
                 pass: random_password,
                 password: hash
+            },
+            select: {
+                uuid: true,
+                username: true,
+                pass: true,
+                createdAt: true,
+
             }
         });
-        const {password, ...safeTokens} = tokens;
         
-        return NextResponse.json({ message: "Tokens created Successfully.", data: safeTokens }, { status: 200 })
+        return NextResponse.json({ message: "Tokens created Successfully.", data: tokens }, { status: 200 })
 
         }catch(error){
             console.error(error);

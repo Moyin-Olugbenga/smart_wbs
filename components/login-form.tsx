@@ -10,18 +10,16 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Formik, useFormik } from "formik";
+import { Formik } from "formik";
 import { authSchema } from "@/app/schemas/auth"
 import { Utility } from "@/classes/clientUtility"
-import { Auth } from "@/classes/Auth"
-import { useRouter } from "next/navigation"
+// import { useRouter } from "next/navigation"
 import { loginAction } from "@/app/actions/auth"
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-      const router = useRouter();
   
     const initialValues = {
         username: "",

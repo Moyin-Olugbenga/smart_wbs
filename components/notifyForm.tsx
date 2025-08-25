@@ -1,9 +1,7 @@
 "use client"
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -12,6 +10,7 @@ import {
 } from "@/components/ui/card"
 import {Bin as _Bin} from "@prisma/client"
 import { Bin } from "@/classes/Bin"
+import { useState } from "react"
 
 const GetBin = ({
     bin,
@@ -20,10 +19,12 @@ const GetBin = ({
     bin: _Bin;
     binId: string;
 }) => {
-    
+    const [message, setMessage] = useState("")
       const reportBin = async () => {
         
-      const bin = await Bin.reportBin(binId);
+      await Bin.reportBin(binId);
+      setMessage("Sucessful");
+
       }
     
 
@@ -34,6 +35,7 @@ const GetBin = ({
       
           <Card className="w-full max-w-sm">
             <CardHeader>
+              <b className="text-green-700">{message}</b>
               <CardTitle>Smart waste bin system</CardTitle>
               <CardDescription className=""><b>Bin name: {bin.name}</b></CardDescription>
               <CardDescription><b>Bin location: {bin.location}</b></CardDescription>

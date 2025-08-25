@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
             if(!dataURL){
                 throw new Error("SOmething went wrong");
             }
-            const updateBin = await database.bin.update({
+             await database.bin.update({
                 where: {
                     uuid
                 },

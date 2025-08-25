@@ -5,5 +5,5 @@ export default async function getCookie() {
   const cookieStore = await cookies();
   const myCookieValue = cookieStore.get('noisses')?.value;
 
-  return 
+  return  myCookieValue;
 }

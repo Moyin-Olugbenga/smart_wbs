@@ -2,7 +2,7 @@
 import { database } from "@/config/db";
 import { NextRequest, NextResponse } from "next/server";
 
-export const POST = async(req: NextRequest, context: { params: Promise<{ binId: string }> }
+export const POST = async( context: { params: Promise<{ binId: string }> }
 ) => {
     const {binId} = await context.params;
     try{

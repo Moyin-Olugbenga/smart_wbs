@@ -1,7 +1,6 @@
 "use client";
-import { Bin } from "@/classes/Bin"
+import { Bin, BinResult } from "@/classes/Bin"
 import { AppSidebar } from "@/components/app-sidebar"
-import { SiteHeader } from "@/components/site-header"
 import Image from 'next/image';
 import {
   SidebarInset,
@@ -13,21 +12,21 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
 import Link from "next/link"
-import { useEffect, useState, useTransition } from "react"
+import { useEffect, useState,} from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import axios from "axios"
 import { Separator } from "@radix-ui/react-separator";
+import {Bin as _Bin} from "@prisma/client"
 
 export default function Page() {
     const router = useRouter();
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<BinResult[]>([]);
   const llink = process.env.NEXT_PUBLIC_API_LINK;
 
   useEffect(() => {
@@ -96,7 +95,7 @@ export default function Page() {
                 </TableHeader>
 
                 <TableBody>
-                  {data.map((bin: any) => (
+                  {data.map((bin: BinResult) => (
                     <TableRow key={bin.uuid}>
                       <TableCell className="font-medium">{bin.id}</TableCell>
                       <TableCell>{bin.name}</TableCell>
