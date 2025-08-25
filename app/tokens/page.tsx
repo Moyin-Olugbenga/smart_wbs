@@ -13,14 +13,10 @@ import { useEffect, useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
 import { TokenResult } from "@/classes/Bin";
 
 
-export default function TokenPage({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+export default function TokenPage() {
   
     const [data, setData] = useState<TokenResult[]>([]);
   const [isPending, startTransition] = useTransition();
@@ -47,7 +43,7 @@ export default function TokenPage({
     
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
       <div className="w-full max-w-sm">
-        <div className={cn("flex flex-col gap-6", className)} {...props}>
+        <div className="flex flex-col gap-6">
           <Card  className="w-[500px] max-w-sm">
             <CardHeader>
               <CardTitle>Smart waste bin system</CardTitle>
