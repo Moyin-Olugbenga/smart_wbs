@@ -9,7 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -17,13 +17,22 @@ import { cn } from "@/lib/utils";
 import { TokenResult } from "@/classes/Bin";
 
 
-    const data = await Token.getTokens();
-export default function Page({
+export default function TokenPage({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  
+    const [data, setData] = useState<TokenResult[]>([]);
   const [isPending, startTransition] = useTransition();
       const router = useRouter();
+      
+        useEffect(() => {
+      const fetchTokens = async () => {
+    const data = await Token.getTokens();
+            setData(data);
+          };
+          fetchTokens();
+        }, []);
 
   const createToken = () => {
     startTransition(async () => {
