@@ -16,6 +16,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import Link from "next/link"
 import { useEffect, useState,} from "react"
 import { useRouter } from "next/navigation"
@@ -107,8 +114,37 @@ export default function Page() {
                       </TableCell>
                       { bin.binUrl != null && bin.filename != null ? 
                       <>
-                      <TableCell>{bin.binUrl}</TableCell> 
-                      <TableCell><Image src={`/qrcodes/${bin.filename}`} alt="Description of my image" width={100} height={100}/></TableCell></>: 
+                        <TableCell>{bin.binUrl}</TableCell> 
+                        <TableCell>
+                          <Dialog>
+                            <DialogTrigger asChild>
+                              <Image
+                                src={bin.filename}
+                                alt="Bin QR Code"
+                                width={100}
+                                height={100}
+                                className="cursor-pointer rounded border"
+                              />
+                            </DialogTrigger>
+                            <DialogContent className="max-w-3xl">
+                              <DialogHeader>
+                                <DialogTitle>QR Code</DialogTitle>
+                              </DialogHeader>
+                              <div className="flex justify-center">
+                                <Image
+                                  src={bin.filename}
+                                  alt="Bin QR Code Enlarged"
+                                  width={600}
+                                  height={600}
+                                  className="rounded-lg shadow-lg"
+                                />
+                              </div>
+                            </DialogContent>
+                          </Dialog>
+                        </TableCell>
+
+                      </>
+                      : 
                        <>
                        <TableCell><Button onClick={() => generateUrl(bin.uuid)}>Generate</Button></TableCell>
                        <TableCell></TableCell>

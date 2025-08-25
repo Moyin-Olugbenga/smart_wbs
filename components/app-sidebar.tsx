@@ -23,7 +23,7 @@ const items = [
   
     {
       title: "Dashboard",
-      url: "/dashboard",
+      url: "/app/dashboard",
       icon: IconDashboard,
     },
     {

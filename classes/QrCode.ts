@@ -5,30 +5,42 @@ import path from 'path';
 
 export class QRGenerator {
     static async generateAndSaveQR(url: string, filename?: string): Promise<string> {
-        try {
+        // try {
             // Create the public/qrcodes directory if it doesn't exist
-            const qrDir = path.join(process.cwd(), 'public', 'qrcodes');
-            console.log("QR directory: ", qrDir);
-            if (!fs.existsSync(qrDir)) {
-                fs.mkdirSync(qrDir, { recursive: true });
-            }
+            // const qrDir = path.join(process.cwd(), 'public', 'qrcodes');
+            // console.log("QR directory: ", qrDir);
+            // if (!fs.existsSync(qrDir)) {
+            //     fs.mkdirSync(qrDir, { recursive: true });
+            // }
 
-            // Generate filename if not provided
-            const qrFilename = filename || `qr_${Date.now()}.png` as string;
-            const filePath = path.join(qrDir, qrFilename);
+            // // Generate filename if not provided
+            // const qrFilename = filename || `qr_${Date.now()}.png` as string;
+            // const filePath = path.join(qrDir, qrFilename);
 
             // Generate QR code and save as PNG
-            await QRCode.toFile(filePath, url, {
+            // await QRCode.toFile(filePath, url, {
+            //     width: 300,
+            //     margin: 2,
+            //     color: {
+            //         dark: '#000000',
+            //         light: '#FFFFFF'
+            //     }
+            // });
+
+            // // Return the public URL path
+            // return qrFilename
+
+            try {
+            const dataURL = await QRCode.toDataURL(url, {
                 width: 300,
                 margin: 2,
                 color: {
-                    dark: '#000000',
-                    light: '#FFFFFF'
-                }
+                dark: "#000000", // QR pixels
+                light: "#FFFFFF", // background
+                },
             });
 
-            // Return the public URL path
-            return qrFilename
+      return dataURL; 
         } catch (error) {
             console.error('Error generating QR code:', error);
             throw new Error('Failed to generate QR code');

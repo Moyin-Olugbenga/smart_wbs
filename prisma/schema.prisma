@@ -36,8 +36,8 @@ model Bin {
 
   name                              String                          @unique
   location                          String?
-  binUrl                            String?
-  filename                          String?
+  binUrl                            String?                     
+  filename                          String?                         @db.Text
   document                          Documentation[]
   notification                      Notification[]
   analytics                         Analytics[]
