@@ -22,7 +22,6 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import axios from "axios"
 import { Separator } from "@radix-ui/react-separator";
-import {Bin as _Bin} from "@prisma/client"
 
 export default function Page() {
     const router = useRouter();

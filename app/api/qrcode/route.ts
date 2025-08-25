@@ -18,8 +18,7 @@ export async function POST(req: NextRequest) {
         if (saveFile == true) {
             // Save QR code as file and return file path
             const filePath = await QRGenerator.generateAndSaveQR(url, fileRealName);
-            // const file = filePath;
-            const updateBin = await database.bin.update({
+             await database.bin.update({
                 where: {
                     uuid
                 },
