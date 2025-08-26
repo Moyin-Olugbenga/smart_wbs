@@ -8,7 +8,7 @@ export class Bin {
     public static async updateBinLocation(binId: string, updates: any) : Promise<any> {
         try {
 
-            const {data} =  await axios.post(`${llink}/api/webhook/${binId}/location`, {
+            const {data} =  await axios.post(`${llink}/api/gpSonic/${binId}/location`, {
                 location: updates.location
             }); 
              return data?.data;
@@ -23,7 +23,7 @@ export class Bin {
     public static async updateBinParams(binId: string, updates: any) : Promise<any> {
         try {
 
-            const {data} =  await axios.post(`${llink}/api/webhook/${binId}/updates`, {
+            const {data} =  await axios.post(`${llink}/api/gpSonic/${binId}/updates`, {
                 location: updates.location,
                 filled_state: updates.filled_state,
                 note: updates.note
