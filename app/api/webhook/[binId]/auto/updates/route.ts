@@ -29,7 +29,7 @@ export const POST = async(req: NextRequest, context: { params: Promise<{ binId: 
                     },
                     document: {
                         create: [{
-                            filled_state
+                            filled_state: parseInt(filled_state)
                         }]
                     }
                 }
