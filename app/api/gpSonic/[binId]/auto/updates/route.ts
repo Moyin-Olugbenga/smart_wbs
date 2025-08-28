@@ -5,7 +5,6 @@ import { NextRequest, NextResponse } from "next/server";
 export const POST = async(req: NextRequest, context: { params: Promise<{ binId: string }> }
 ) => {
     const {binId} = await context.params;
-    console.log(await req.json());
     const {location, filled_state, note} = await req.json();
     console.log(location, filled_state, note);
 
